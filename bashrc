@@ -134,3 +134,10 @@ alias lr='ll -R'           #  Recursive ls.
 alias la='ll -A'           #  Show hidden files.
 
 
+#--------------------------------------------------------------
+# Git stuff
+#--------------------------------------------------------------
+
+alias gs='git status'		# git status
+alias gc='git commit -am'	# git commit with message
+
