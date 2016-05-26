@@ -141,3 +141,4 @@ alias la='ll -A'           #  Show hidden files.
 alias gs='git status'		# git status
 alias gc='git commit -am'	# git commit with message
 
+
