@@ -1,0 +1,20 @@
+[user]
+	name = Todd Suomela
+	email = tsuomela@gmail.com
+[color]
+	ui = auto
+[core]
+	editor = subl -n -w
+	excludesfile = /Users/todd/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Managing/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[alias]
+	deleted = log --diff-filter=D —summary
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    go = checkout
+    ga = add
