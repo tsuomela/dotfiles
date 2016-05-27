@@ -13,8 +13,12 @@
 	cmd = /Applications/Managing/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [alias]
-	deleted = log --diff-filter=D —summary
+	deleted = log --diff-filter=D —-summary
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     go = checkout
     ga = add
+    br = branch
+    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    up = push origin
+    down = pull origin
