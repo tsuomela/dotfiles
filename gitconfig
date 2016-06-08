@@ -22,3 +22,4 @@
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     up = push origin
     down = pull origin
+    co = commit -m
