@@ -76,7 +76,7 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(after! evil-org
+(after! org
   (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h)
   (dolist (face '((org-level-1 . 1.5)
                   (org-level-2 . 1.3)
@@ -87,18 +87,16 @@
                   (org-level-7 . 1.1)
                   (org-level-8 . 1.1)))
     (set-face-attribute (car face) nil :weight 'bold :height (cdr face))))
-
-(use-package! org-modern
-  :config
-  (setq
-  org-auto-align-tags t
-  org-tags-column t
-  org-fold-catch-invisible-edits 'show-and-error
-  org-special-ctrl-a/e t
-  org-insert-heading-respect-content t))
-
-(use-package! org-superstar
-  :config
-  (org-superstar-configure-like-org-bullets))
+  ;; (use-package! org-modern
+  ;;   :config
+  ;;   (setq
+  ;;    org-auto-align-tags t
+  ;;    org-tags-column t
+  ;;    org-fold-catch-invisible-edits 'show-and-error
+  ;;    org-special-ctrl-a/e t
+  ;;    org-insert-heading-respect-content t))
+  ;; (use-package! org-superstar
+  ;;   :config
+  ;;   (org-superstar-configure-like-org-bullets)))
   ;;(setq org-superstar-leading-bullet " ")
   ;;(setq org-superstar-special-todo-items t))
