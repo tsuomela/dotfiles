@@ -100,3 +100,8 @@
   ;;   (org-superstar-configure-like-org-bullets)))
   ;;(setq org-superstar-leading-bullet " ")
   ;;(setq org-superstar-special-todo-items t))
+
+;; trying evil-dvorak
+(use-package! evil-dvorak
+  :ensure t
+  :config (global-evil-dvorak-mode 1))
