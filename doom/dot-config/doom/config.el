@@ -75,7 +75,16 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+(use-package! doom-modeline
+  :config
+  (setq doom-modeline-enable-word-count t))  ;; Enables word count in modeline
 
+(after! org
+   (setq org-todo-keywords
+       '((sequence "TODO(t)" "PROJ(p)" "MTGN(m)" "NEXT(n)" "WAIT(w)" "HOLD(h)" "IDEA(i)" "|" "DONE(d)" "KILL(k)")
+          (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)")
+          (sequence "|" "OKAY(o)" "YES(y)" "NO(n)")))
+ )
 (after! evil-org
   (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h)
   (dolist (face '((org-level-1 . 1.5)
@@ -87,7 +96,7 @@
                   (org-level-7 . 1.1)
                   (org-level-8 . 1.1)))
     (set-face-attribute (car face) nil :weight 'bold :height (cdr face))))
-  ;; (use-package! org-modern
+ ;; (use-package! org-modern
   ;;   :config
   ;;   (setq
   ;;    org-auto-align-tags t
