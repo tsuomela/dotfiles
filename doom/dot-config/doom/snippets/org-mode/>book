@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: Book Entry
+# uuid:
+# key: bk
+# condition: t
+# --
+**  ${1: title}
+:PROPERTIES:
+:Author:   $2
+:Year:     $3
+:F-NF:     $4
+:Recorded:
+:END:
+$0

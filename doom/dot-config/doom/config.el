@@ -84,7 +84,16 @@
        '((sequence "TODO(t)" "PROJ(p)" "MTGN(m)" "NEXT(n)" "WAIT(w)" "HOLD(h)" "IDEA(i)" "|" "DONE(d)" "KILL(k)")
           (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)")
           (sequence "|" "OKAY(o)" "YES(y)" "NO(n)")))
- )
+   (setq org-capture-templates
+         '(("t" "Personal todo" entry
+            (file+headline +org-capture-todo-file "Inbox")
+           "* TODO %?\n %i\n %a" :prepend t)
+           ("j" "Journal" entry
+            (file+olp+datetree +org-capture-journal-file)
+            "* %U %?\n %i\n %a" :prepend t)
+         ))
+   (setq org-archive-location "archive.org::datetree//")
+   )
 (after! evil-org
   (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h)
   (dolist (face '((org-level-1 . 1.5)
