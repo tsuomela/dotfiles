@@ -81,7 +81,7 @@
 
 (after! org
    (setq org-todo-keywords
-       '((sequence "TODO(t)" "PROJ(p)" "MTGN(m)" "NEXT(n)" "WAIT(w)" "HOLD(h)" "IDEA(i)" "|" "DONE(d)" "KILL(k)")
+       '((sequence "TODO(t)" "PROJ(p)" "NEXT(n)" "WAIT(w)" "HOLD(h)" "IDEA(i)" "|" "MTGN(m)" "DONE(d)" "KILL(k)")
           (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)")
           (sequence "|" "OKAY(o)" "YES(y)" "NO(n)")))
    (setq org-capture-templates
@@ -93,8 +93,6 @@
             "* %U %?\n %i\n %a" :prepend t)
          ))
    (setq org-archive-location "archive.org::datetree//")
-   )
-(after! evil-org
   (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h)
   (dolist (face '((org-level-1 . 1.5)
                   (org-level-2 . 1.3)
@@ -120,6 +118,6 @@
   ;;(setq org-superstar-special-todo-items t))
 
 ;; trying evil-dvorak
-(use-package! evil-dvorak
-  :ensure t
-  :config (global-evil-dvorak-mode 1))
+;;(use-package! evil-dvorak
+;;  :ensure t
+;;  :config (global-evil-dvorak-mode 1))
