@@ -37,7 +37,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+dk(setq display-line-numbers-type t)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -75,6 +75,12 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+;;
+;; Some keybindings.
+;;
+;;
+(map! "C-x C-r" #'consult-recent-file)
+
 (use-package! doom-modeline
   :config
   (setq doom-modeline-enable-word-count t))  ;; Enables word count in modeline
@@ -93,8 +99,11 @@
             "* %U %?\n %i\n %a" :prepend t)
          ))
    (setq org-archive-location "archive.org::datetree//")
-  (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h)
-  (dolist (face '((org-level-1 . 1.5)
+   (map! "C-c l" #'org-store-link
+         "C-c a" #'org-agenda
+         "C-c c" #'org-capture)
+   (remove-hook 'org-tab-first-hook #'+org-cycle-only-current-subtree-h)
+   (dolist (face '((org-level-1 . 1.5)
                   (org-level-2 . 1.3)
                   (org-level-3 . 1.2)
                   (org-level-4 . 1.1)
@@ -103,7 +112,7 @@
                   (org-level-7 . 1.1)
                   (org-level-8 . 1.1)))
     (set-face-attribute (car face) nil :weight 'bold :height (cdr face))))
- ;; (use-package! org-modern
+  ;; (use-package! org-modern
   ;;   :config
   ;;   (setq
   ;;    org-auto-align-tags t
