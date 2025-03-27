@@ -1,5 +1,25 @@
 ;; starting with stuff from daviwill/emacs-from-scratch on github
 
+;;--------- Package Management
+;; Initialize package sources
+(require 'package)
+
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+
+(package-initialize)
+(unless package-archive-contents
+ (package-refresh-contents))
+
+;; Initialize use-package on non-Linux platforms
+(unless (package-installed-p 'use-package)
+   (package-install 'use-package))
+
+(require 'use-package)
+(setq use-package-always-ensure t)
+
+
 ;;--------- Custom file settings
 ;; Set location for custom.el information
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -66,25 +86,6 @@
   :hook
   (prog-mode . rainbow-delimiters-mode))
 
-;;--------- Package Management
-;; Initialize package sources
-(require 'package)
-
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("org" . "https://orgmode.org/elpa/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
-
-(package-initialize)
-(unless package-archive-contents
- (package-refresh-contents))
-
-;; Initialize use-package on non-Linux platforms
-(unless (package-installed-p 'use-package)
-   (package-install 'use-package))
-
-(require 'use-package)
-(setq use-package-always-ensure t)
-
 ;;--------- Completion
 ;; trying out ivy
 ;; ivy and counsel install
@@ -101,6 +102,7 @@
 ;; Enable Vertico.
 
 (use-package vertico
+  :demand t
   ;; :custom
   ;; (vertico-scroll-margin 0) ;; Different scroll margin
   ;; (vertico-count 20) ;; Show more candidates
@@ -194,10 +196,15 @@
    org-M-RET-may-split-line '((default . nil))
    org-log-done 'time
    org-log-into-drawer t
+
    ;; Org styling, hide markup etc.
    org-pretty-entities t
    org-ellipsis "…"
 
+   ;; jumping to locations C-c C-j org-goto function
+   org-goto-interface 'outline-path-completion
+   org-outline-path-complete-in-steps nil
+   
    ;; Todo keywords  
    org-todo-keywords
    '((sequence "TODO(t)" "WAIT(w!)"  "|" "CANCEL(c@)" "DONE(d!)"))
