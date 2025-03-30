@@ -169,7 +169,6 @@
   (when (and (org-at-heading-p)
 	     (let (flag)
 	       (with-current-buffer (current-buffer)
-		 (hack-local-variables)
 		 (when (boundp 'tes-created-flag)
 		   (setq flag (symbol-value 'tes-created-flag))))
 	       flag)
@@ -221,5 +220,10 @@
    ;; consider adding to templates with one for meeting notes, that also goes to the journal file
    org-archive-location "archive.org::datetree//")
   (tes/org-font-setup))
-
    
+;; magit --- configuration
+(use-package magit)
+
+;; ediff --- configuration
+(setq ediff-split-window-function 'split-window-horizontally)
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
