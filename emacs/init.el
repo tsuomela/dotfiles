@@ -166,37 +166,45 @@
          ("C-c a" . org-agenda)
          ("C-c c" . org-capture))
 
-  :config (setq
-	   org-special-ctrl-a/e t
-	   org-use-speed-commands t
-	   org-insert-heading-respect-content t
-	   org-M-RET-may-split-line '((default . nil))
-	   org-log-done 'time
-	   org-log-into-drawer t
+  :custom
+	   (org-special-ctrl-a/e t)
+	   (org-use-speed-commands t)
+	   (org-insert-heading-respect-content t)
+	   (org-M-RET-may-split-line '((default . nil)))
 
+	   ;; double spacing
+	   (sentence-end-double-space nil)
+	   
+	   ;; logging
+	   (org-log-done 'time)
+	   (org-log-into-drawer t)
+
+	   ;; agenda warning day
+	   (org-deadline-warning-days 3)
+	   
 	   ;; Org styling, hide markup etc.
-	   org-pretty-entities t
-	   org-ellipsis "…"
+	   (org-pretty-entities t)
+	   (org-ellipsis "…")
 
 	   ;; jumping to locations C-c C-j org-goto function
-	   org-goto-interface 'outline-path-completion
-	   org-outline-path-complete-in-steps nil
+	   (org-goto-interface 'outline-path-completion)
+	   (org-outline-path-complete-in-steps nil)
 	   
 	   ;; Todo keywords  
-	   org-todo-keywords
-	   '((sequence "TODO(t)" "WAIT(w!)"  "|" "CANCEL(c@)" "DONE(d!)"))
+	   (org-todo-keywords
+	   '((sequence "TODO(t)" "WAIT(w!)"  "|" "CANCEL(c@)" "DONE(d!)")))
 
 	   ;; Capture templates
-	   org-capture-templates
+	   (org-capture-templates
 	   '(("t" "Personal todo" entry
 	      (file+headline "Agenda/todo.org" "Inbox")
 	      "* TODO %?\n %i\n" :prepend t)
 	     ("i" "Idea" entry
 	      (file+headline "Agenda/todo.org" "Idea")
-	      "* IDEA %?\n %i\n" :prepend t))
+	      "* IDEA %?\n %i\n" :prepend t)))
 
 	   ;; consider adding to templates with one for meeting notes, that also goes to the journal file
-	   org-archive-location "archive.org::datetree//")
+	   (org-archive-location "archive.org::datetree//")
 
   (tes/org-font-setup))
 

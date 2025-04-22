@@ -274,59 +274,59 @@ Setting hooks
   
 #+begin_src emacs-lisp
 
-  ;; org --- use-package call
-  (use-package org
-    :init
-    (setq org-directory "~/Dropbox/Org/")
-    (setq org-agenda-files (list (expand-file-name "Agenda/" org-directory)))
-    :hook ((org-mode . tes/org-mode-setup)
-  	 (org-insert-heading . tes/org-set-created-property))
+   ;; org --- use-package call
+   (use-package org
+     :init
+     (setq org-directory "~/Dropbox/Org/")
+     (setq org-agenda-files (list (expand-file-name "Agenda/" org-directory)))
+     :hook ((org-mode . tes/org-mode-setup)
+   	 (org-insert-heading . tes/org-set-created-property))
 
-    :bind (("C-c l" . org-store-link)
-           ("C-c a" . org-agenda)
-           ("C-c c" . org-capture))
+     :bind (("C-c l" . org-store-link)
+            ("C-c a" . org-agenda)
+            ("C-c c" . org-capture))
 
-    :config (setq
-  	   org-special-ctrl-a/e t
-  	   org-use-speed-commands t
-  	   org-insert-heading-respect-content t
-  	   org-M-RET-may-split-line '((default . nil))
+     :custom
+   	   (org-special-ctrl-a/e t)
+   	   (org-use-speed-commands t)
+   	   (org-insert-heading-respect-content t)
+   	   (org-M-RET-may-split-line '((default . nil)))
 
-  	   ;; double spacing
-  	   sentence-end-double-space nil
-  	   
-  	   ;; logging
-  	   org-log-done 'time
-  	   org-log-into-drawer t
+   	   ;; double spacing
+   	   (sentence-end-double-space nil)
+   	   
+   	   ;; logging
+   	   (org-log-done 'time)
+   	   (org-log-into-drawer t)
 
-  	   ;; agenda warning day
-  	   org-deadline-warning-days 3
-  	   
-  	   ;; Org styling, hide markup etc.
-  	   org-pretty-entities t
-  	   org-ellipsis "…"
+   	   ;; agenda warning day
+   	   (org-deadline-warning-days 3)
+   	   
+   	   ;; Org styling, hide markup etc.
+   	   (org-pretty-entities t)
+   	   (org-ellipsis "…")
 
-  	   ;; jumping to locations C-c C-j org-goto function
-  	   org-goto-interface 'outline-path-completion
-  	   org-outline-path-complete-in-steps nil
-  	   
-  	   ;; Todo keywords  
-  	   org-todo-keywords
-  	   '((sequence "TODO(t)" "WAIT(w!)"  "|" "CANCEL(c@)" "DONE(d!)"))
+   	   ;; jumping to locations C-c C-j org-goto function
+   	   (org-goto-interface 'outline-path-completion)
+   	   (org-outline-path-complete-in-steps nil)
+   	   
+   	   ;; Todo keywords  
+   	   (org-todo-keywords
+   	   '((sequence "TODO(t)" "WAIT(w!)"  "|" "CANCEL(c@)" "DONE(d!)")))
 
-  	   ;; Capture templates
-  	   org-capture-templates
-  	   '(("t" "Personal todo" entry
-  	      (file+headline "Agenda/todo.org" "Inbox")
-  	      "* TODO %?\n %i\n" :prepend t)
-  	     ("i" "Idea" entry
-  	      (file+headline "Agenda/todo.org" "Idea")
-  	      "* IDEA %?\n %i\n" :prepend t))
+   	   ;; Capture templates
+   	   (org-capture-templates
+   	   '(("t" "Personal todo" entry
+   	      (file+headline "Agenda/todo.org" "Inbox")
+   	      "* TODO %?\n %i\n" :prepend t)
+   	     ("i" "Idea" entry
+   	      (file+headline "Agenda/todo.org" "Idea")
+   	      "* IDEA %?\n %i\n" :prepend t)))
 
-  	   ;; consider adding to templates with one for meeting notes, that also goes to the journal file
-  	   org-archive-location "archive.org::datetree//")
+   	   ;; consider adding to templates with one for meeting notes, that also goes to the journal file
+   	   (org-archive-location "archive.org::datetree//")
 
-    (tes/org-font-setup))
+     (tes/org-font-setup))
 #+end_src
    
 * Magit
