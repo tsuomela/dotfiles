@@ -128,7 +128,8 @@
 ; setup functions to be called during package load
 (defun tes/org-mode-setup ()
   (org-indent-mode)
-  (visual-line-mode 1))
+  (visual-line-mode 1)
+  (tes/org-font-setup))
 
 ; setup function for font-setup in org
 (defun tes/org-font-setup () (dolist (face '((org-level-1 . 1.5)
@@ -206,7 +207,7 @@
 	   ;; consider adding to templates with one for meeting notes, that also goes to the journal file
 	   (org-archive-location "archive.org::datetree//")
 
-  (tes/org-font-setup))
+  )
 
 ;; magit --- configuration
 (use-package magit)
